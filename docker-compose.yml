@@ -33,6 +33,7 @@ services:
       - ./php/.env
     volumes:
       - db_data:/var/lib/mysql
+      - ./db_init_scripts:/docker-entrypoint-initdb.d/
     networks:
       - app-network  
 

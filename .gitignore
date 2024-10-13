@@ -1,0 +1,5 @@
+gitkey
+ssh_init.sh
+php/vendor/
+.env
+/ssh_init/

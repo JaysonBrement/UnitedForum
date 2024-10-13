@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "8080:80"  
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./php:/var/www/html
+    depends_on:
+      - php
+    networks:
+      - frontend 
+      - app-network
+
+  php:
+    build:
+      context: ./php
+    container_name: php
+    volumes:
+      - ./php:/var/www/html
+    networks:
+      - app-network  
+    depends_on:
+      - db
+
+  db:
+    image: mysql:9.0.1
+    container_name: db
+    env_file:
+      - ./php/.env
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app-network  
+
+networks:
+  frontend:
+    driver: bridge  
+  app-network:
+    driver: bridge  
+
+volumes:
+  db_data:

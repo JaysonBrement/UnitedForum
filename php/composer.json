@@ -1,0 +1,16 @@
+{
+    "require": {
+        "composer": "^2.7",
+        "m1/env": "^2.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Framework\\": "Framework/",
+            "Frameork\\": "Framework/"
+        }
+    },
+   "require-dev": {
+        "symfony/var-dumper": "^7.1"
+        
+    }
+}

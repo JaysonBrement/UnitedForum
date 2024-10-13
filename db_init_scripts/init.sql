@@ -1,8 +1,8 @@
-Create Database Forum;
+Create Database IF NOT EXISTS Forum;
 
 Use Forum;
 
-CREATE TABLE Users (
+CREATE TABLE IF NOT EXISTS Users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
@@ -12,12 +12,12 @@ CREATE TABLE Users (
     profile_picture TEXT
 )ENGINE=InnoDB;
 
-CREATE TABLE Categories (
+CREATE TABLE IF NOT EXISTS Categories (
     category_id INT AUTO_INCREMENT PRIMARY KEY,
     category_name VARCHAR(255) NOT NULL
 )ENGINE=InnoDB;
 
-CREATE TABLE Threads (
+CREATE TABLE IF NOT EXISTS Threads (
     thread_id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     user_id INT NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE Threads (
     FOREIGN KEY (category_id) REFERENCES Categories(category_id)
 )ENGINE=InnoDB;
 
-CREATE TABLE Posts (
+CREATE TABLE IF NOT EXISTS Posts (
     post_id INT AUTO_INCREMENT PRIMARY KEY,
     thread_id INT NOT NULL,
     user_id INT NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE Posts (
 )ENGINE=InnoDB;
 
 
-CREATE TABLE Private_Messages (
+CREATE TABLE IF NOT EXISTS Private_Messages (
     message_id INT AUTO_INCREMENT PRIMARY KEY,
     sender_id INT NOT NULL,
     receiver_id INT NOT NULL,
